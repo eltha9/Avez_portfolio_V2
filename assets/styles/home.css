@@ -1,3 +1,399 @@
 body{
-    background-color: red;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    margin: 0;
+    position: relative;
+    perspective: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+/* 
+    Menu / small position fixed content 
+*/
+
+/* logo */
+a.logo{
+    display: block;
+    font-family: Cellini-Medium, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: uppercase;
+    color:white;
+    width: 15.3vw;
+    padding: 40px 0 0 16px;
+    z-index: 20;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.social{
+    position: absolute;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 30px 30px;
+}
+.social img{
+    display: block;
+    width: 18px;
+}
+.social .facebook img{
+    width:10px ;
+    margin: 22px 0;
+}
+
+/* 
+    Main animation 
+*/
+div.home-animation-window{
+    z-index: -2;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top:0%;
+    left:0;    
+    display: flex;
+
+}
+    div.home-animation-window *{
+        display: block;
+        height: 100%;
+        
+    }
+    div.home-animation-window .window-side{
+        width: 15.5%;
+    }
+    div.home-animation-window .border{
+        border-left: 1px solid rgba(151, 151, 151, 0.3);
+        transform: translateY(-100%);
+        animation-name: bar;
+        animation-delay: 2s;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        position: relative;
+    }
+    div.home-animation-window .window-center{
+        width: 13.8%;
+        
+    }
+    div.home-animation-window .window-side.right{
+        width: 15.5%;
+        
+    }
+
+div.window-text{
+    position: absolute;
+    color: white;
+
+    top:50%;
+    left:50%;
+
+
+
+    font-family: Frank Ruhl Libre, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 75px;
+    line-height: 89px;
+    text-align: center;
+    letter-spacing: 1.8px;
+
+
+
+    animation-name: welcome-global;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    
+}
+    div.window-text span.window-transform{
+        transform: rotateX(0deg);    
+    }
+    div.window-text span{
+        transform-origin: 0% 100%;
+        display: block;
+        backface-visibility: hidden;
+        transform: rotateX(-90deg);
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: ease;
+        
+
+    }
+    div.window-text span.first{
+
+        animation-name: welcome;
+        animation-delay: 0.3s;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    div.window-text span.second{
+
+        animation-name: welcome;
+        animation-delay: 1s;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    
+    
+.nav{
+    position: absolute; 
+    margin-top: 40px;
+    top:0;
+    left: 2%;
+
+    /* display: none; */
+    opacity: 0;
+    animation-name: menu;
+    animation-delay: 3.8s;
+    align-self: auto;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+}
+    a.nav{
+        color: white;
+        font-family: Arial;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+main{
+    width: 69%;
+    height: 80%;
+
+    opacity: 0;
+
+    animation-name: menu;
+    animation-delay: 4.5s;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+
+    position: relative;
+
+}
+    main .content{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    main .content a{
+        width: 100%;
+        height: 100%;
+    }
+        main .content .contour{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: black;
+            width:27.7vw ;
+            height: 54.3vh;
+            border: 7px solid;
+            border-color: #B81800;
+        }
+            main .content .project{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+                main .content .project h2{
+                    font-family: Jost, sans-serif;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 22px;
+                    line-height: 33px;
+
+                    color: white;
+                    margin:0;
+                    text-transform: uppercase;
+                }
+                main .content .project .img{
+                    width: 60vw;
+                    height: 66vh;
+                    border-top: 35px solid black;
+                    border-left: 35px solid black;
+                    
+                    z-index: 20;
+                }
+                    main .content .project .img .sub-img{
+                        height: 100%;
+                        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+                        white-space:nowrap;
+                    }
+                    main .content .project .img .sub-img .content{
+                        width: 100%;
+                        height: 100%;
+                        z-index: -20;
+                    }
+                    main .content .project .img .sub-img .content img{
+                        width: 100%;
+                        height: 100%;
+                    }
+        main .content .id{
+            position: absolute;
+            bottom: -3%;
+            right: -9%;
+
+            font-family: Arial Black;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 86px;
+            line-height: 121px;
+            text-align: center;
+
+            color: black;
+            -webkit-text-stroke: 1px white;
+
+        }
+    main .last{
+        position: absolute;
+        width: 49.5vw;
+        height: 50vh;
+
+
+        top:50%;
+        left: 0%;
+        transform: translate(-120%,-50%);
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+    }
+        main .last .content{
+            width: 100%;
+            height: 100%;
+            white-space:nowrap;
+            transform: translateX(100%)
+
+        }
+            main .last .content img{
+                width: 100%;
+                height: 100%;
+                opacity: 0.6;
+            }
+            
+    main .next{
+        position: absolute;
+        width: 49.5vw;
+        height: 50vh;
+
+
+        top:50%;
+        right: 0%;
+        transform: translate(120%,-50%);
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+    }
+        main .next .content{
+            width: 100%;
+            height: 100%;
+            white-space:nowrap;
+
+        }
+        main .next .content img{
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+            white-space:nowrap;
+            
+        }
+
+.next-button{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+
+    bottom: 3%;
+    right: 16%;
+    cursor: pointer;
+
+}
+    .next-button img{
+        width:32px;
+        height: 32px;
+        
+    }
+.last-button{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+
+    bottom: 3%;
+    left: 16%;
+    cursor: pointer;
+
+}
+    .last-button img{
+        width:32px;
+        height: 32px;
+        transform-origin: 50% 50%;
+        transform: rotateZ(180deg);
+    }
+
+
+
+
+
+/* ANIMATION */
+
+@keyframes welcome{
+    0%{
+        transform: translate(-50%,-50%) rotateX(-90deg);
+    }
+    100%{
+        transform: translate(-50%,-50%) rotateX(0deg);
+    }
+}
+
+@keyframes welcome-global{
+    0%{
+        top:50%;
+    }
+    100%{
+        top:-50%;
+    }
+}
+
+@keyframes menu{
+    0%{
+        opacity: 0;
+        
+    }
+    100%{
+        opacity: 1;
+        
+    }
+}
+@keyframes bar{
+    0%{
+        transform: translateY(-100%);
+
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+@keyframes content{
+    0%{
+        opacity: 0;
+        
+    }
+    100%{
+        opacity: 1;
+        
+    }
 }
