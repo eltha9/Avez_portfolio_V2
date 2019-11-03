@@ -44,6 +44,11 @@
 <script>
 import Head from '~/components/Head.vue'
 export default {
+    head(){
+        return{
+            title: "Gaetan Avez - Contact Me"
+        }
+    },
     components:{
         Head
     }
@@ -138,7 +143,6 @@ export default {
         vertical-align: middle;
         width: 32px;
         height: 32px;
-
     }
 
 </style>

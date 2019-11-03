@@ -1,0 +1,18 @@
+{
+    "main_image":"/projet-candia/Candia_project.png",
+    "page_title":"Candy’Up bio",
+    "post_type":"UX",
+    "post_name":"Desing",
+    "project_date":"08/2019",
+    "project_type":"Website",
+    "project_top_description":"When i was in internship at the Baltazare agency, i enjoy creating a presentational website for their new product, Candy’up Bio.",
+    "project_slogan":"Candia is n°1 in milk production in France",
+    "project_main_text":"This summer, Candia release a new product, Candy’up Bio, and they need to present this product on their website. <br> <br>Like for the others candia’s products, they present them on on a single page. This page include all the differents nutrition’s informations and at the same time communicate about the benefits of this drink.",
+    "project_mockup_img":"/projet-candia/mockup_contenu_candia.png",
+    "project_bottom_img":"/projet-candia/Candia_bottom.png",
+    "next_project":{
+        "name":"Golden Sludge",
+        "link":"golden_sludge",
+        "img":"/projet-golden-sludge/Golden_project.png"
+    }
+}

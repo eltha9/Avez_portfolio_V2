@@ -1,0 +1,18 @@
+{
+    "main_image":"/projet-thib/Thib_project.png",
+    "page_title":"Thibault Richard’s portfolio",
+    "post_type":"UI/UX",
+    "post_name":"Desing",
+    "project_date":"03/2018",
+    "project_type":"Portfolio",
+    "project_top_description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    "project_slogan":"Lorem ipsum dolor sit amet,dfghjklkjhg",
+    "project_main_text":"This summer, Candia release a new product, Candy’up Bio, and they need to present this product on their website. <br> <br>Like for the others candia’s products, they present them on on a single page. This page include all the differents nutrition’s informations and at the same time communicate about the benefits of this drink.",
+    "project_mockup_img":"/projet-thib/mockup_contenu_thib.png",
+    "project_bottom_img":"/projet-thib/",
+    "next_project":{
+        "name":"Candy’up Bio",
+        "link":"candy_up",
+        "img":"/proje-candia/Candia_project.png"
+    }
+}

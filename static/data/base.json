@@ -1,0 +1,18 @@
+{
+    "main_image":"",
+    "page_title":"",
+    "post_type":"",
+    "post_name":"",
+    "project_date":"",
+    "project_type":"",
+    "project_top_description":"",
+    "project_slogan":"",
+    "project_main_text":"",
+    "project_mockup_img":"",
+    "project_bottom_img":"",
+    "next_project":{
+        "name":"",
+        "link":"",
+        "img":""
+    }
+}
