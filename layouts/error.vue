@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Head/>
-        <div class="content">
+        <div class="content error">
             <img src="~/assets/images/404.png" alt="">
             <div>
                 <span class="title">404</span>
@@ -21,17 +21,17 @@ export default {
 </script>
 
 <style>
-    .content{
+    .content.error{
         position:relative
     }
-    .content img{
+    .content.error img{
         position:absolute;
         left: 50%;
         top:50%;
         transform: translate(-50%,-50%);
         z-index: 90;
     }
-    .content div{
+    .content.error div{
         position: absolute;
         left:50%;
         top: 50%;
@@ -39,12 +39,12 @@ export default {
         z-index: 100;
         text-align: center
     }
-    .content div span.title{
+    .content.error div span.title{
         font-size: 308px;
         letter-spacing: 15px;
         color: white;
     }
-    .content div span.sub-title{
+    .content.error div span.sub-title{
         font-size: 18px;
         letter-spacing: 0.68px;
         color: white;
