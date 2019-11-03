@@ -5,7 +5,12 @@
         <div class="content about">
             <div class="row align-row top">
                 <div class="taille-3 gaetan-profile-pic">
-                    
+                    <div class="pic">
+                        <!-- <div class="sub-square square-1"></div>
+                        <div class="sub-square square-2"></div>
+                        <div class="sub-square square-3"></div> -->
+                        <img src="~/assets/images/about_pic.png" alt="">
+                    </div>
                 </div>
                 <div class="taille-2 description">
                     <h1>Hello, my name is <span class="subline">Gaëtan Avez, </span>i’m a french designer based in Paris.  </h1>
@@ -141,9 +146,11 @@ export default {
 </script>
 
 <style>
+body{
+    padding-top:10%;
+}
     .content.about{
-
-        padding: 0 15.5%;
+        padding: 0 15.5%;;
 
     }
     .content.about .align-row{
@@ -158,6 +165,33 @@ export default {
     }
     .content.about .gaetan-profile-pic{
 
+
+    }
+    .content.about .gaetan-profile-pic .pic{
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .content.about .gaetan-profile-pic .pic .sub-square{
+        position: absolute;
+        width: 60%;
+        height: 100%;
+
+    }
+    .content.about .gaetan-profile-pic .pic .square-1{
+        border: 7px solid #473C30;
+
+    }
+    .content.about .gaetan-profile-pic .pic .square-2{
+        border: 7px solid #726353;
+
+    }
+    .content.about .gaetan-profile-pic .pic .square-3{
+        border: 7px solid #D7C6B3;
+
+    }
+    .content.about .gaetan-profile-pic .pic img{
+        width:70%;
 
     }
 
