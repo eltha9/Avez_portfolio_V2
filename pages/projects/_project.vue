@@ -11,7 +11,7 @@
                 <div class="line"></div>
                 <span class="post-name">{{json.post_name}}</span>
             </div>
-            <div class="row align row taille-5">
+            <div class="row align-row taille-5">
                 <div class="taille-1 project-date">
                     {{json.project_date}}
                 </div>
@@ -22,7 +22,14 @@
                     {{json.project_top_description}}
                 </div>
             </div>
+            <div class="row align-row">
+                <div class="taille-1" >
 
+                </div>
+                <div class="taille-4">
+                    <h2 class="project-slogan">{{json.project_slogan}}</h2>
+                </div>
+            </div>
             <div class="row align-row">
                 <div class="taille-2">
                     <img class="mockup" src="" alt="">
@@ -38,7 +45,9 @@
             <div class="next-project taille-5 row">
                 <h3>Next project:</h3>
                 <!-- <a href="{{next.link}}">{{next.name}}</a> -->
+                <div class="taille_5 image-next">
                 <!-- <img src="" alt="">{{next.img}} -->
+                </div>
             </div>
         </div>
     </div>
@@ -105,32 +114,54 @@ export default {
     }
 
     /* main content */
-    .content.project .page_title{
-        
+    .content.project .page-title{
+        color: white;
+        font-size: 64px;
     }
-    .content.project .post_type{
-
+    .content.project .post-type{
+        color:white;
+        font-size: 18px;
     }
-    .content.project .post_name{
-
+    .content.project .post-name{
+        color:white;
+        font-size: 18px;
     }
-    .content.project .project_date{
-
+    .content.project .project-date{
+        color: #A6A6A6;
+        font-size: 22px;
     }
-    .content.project .project_type{
-
+    .content.project .project-type{
+        color: #A6A6A6;
+        font-size: 22px;
     }
-    .content.project .project_top_description{
-
+    .content.project .project-top-description{
+        color: #A6A6A6;
+        font-size: 22px;
     }
-    .content.project .project_slogan{
-
+    .content.project .project-slogan{
+        color: white;
+        font-size: 64px;
     }
-    .content.project .project_main_text{
-
+    .content.project .project-main-text{
+        color: #A6A6A6;
+        font-size: 22px;
     }
     /* next project */
     .content.project .next-project{
 
+    }
+    .content.project .next-project h3{
+        font-size: 32px;
+        color: white;
+    }
+    .content.project .next-project a{ 
+        font-size: 24px;
+        color: #A6A6A6;
+    }
+    .content.project .next-project .image-next{
+        height: 20%;
+    }
+    .content.project .next-project .image-next img{
+        width: 100%;
     }
 </style>
