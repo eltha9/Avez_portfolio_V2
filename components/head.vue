@@ -8,7 +8,7 @@
                 <a class="nav" href="/about">About me</a>
             </div>
             <div class="window-center border">
-                <a class="nav" href="#">Project</a>
+                <a class="nav" href="/">Project</a>
             </div>
             <div class="window-center border">
                 <a class="nav" href="/contact">Contact</a>

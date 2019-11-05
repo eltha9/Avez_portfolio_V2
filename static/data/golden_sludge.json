@@ -1,5 +1,5 @@
 {
-    "main_image":"/projet-golden-sludge/",
+    "main_image":"~/assets/images/projet-golden-sludge/",
     "page_title":"Golden Sludge",
     "post_type":"UI/UX",
     "post_name":"Desing",
@@ -8,11 +8,11 @@
     "project_top_description":"When i was in internship at the Baltazare agency, i had to do few creations for the SpeakUp Africa compagny. Golden Sludge is one of their new alliance.",
     "project_slogan":"Increase awareness Sanitation in West African countries.",
     "project_main_text":"The Golden Sludge Alliance aims to celebrate successes, influence policies and practices, consolidate knowledge, use and showcase innovative approaches for sustainable sanitation in Africa. <br> <br> They wanted a website in the spirit of their other website, like Speak-Up Africa. This landing page include all the differents informations about the association.",
-    "project_mockup_img":"/projet-golden-sludge/mockup_contenu_golden.png",
-    "project_bottom_img":"/projet-golden-sludge/",
+    "project_mockup_img":"~/assets/images/projet-golden-sludge/mockup_contenu_golden.png",
+    "project_bottom_img":"~/assets/images/projet-golden-sludge/",
     "next_project":{
         "name":"Concept page Unsplash",
         "link":"unsplash",
-        "img":"/projet-unsplash/unsplash_project.png"
+        "img":"~/assets/images/projet-unsplash/unsplash_project.png"
     }
 }
