@@ -3,10 +3,10 @@
         <Head />
         <div class="content project">
             <div class="main_image">
-                <img src="" :alt="json.page_title + 'Home page'">
+                <img src="~/assets/images/projet-thib/Thib_project.png" :alt="json.page_title + 'Home page'">
             </div>
-            <h1>{{json.page_title}}</h1>
-            <div class="row taille-1">
+            <h1 class="page-title">{{json.page_title}}</h1>
+            <div class="row taille-1 align-row">
                 <span class="post-type">{{json.post_type}}</span>
                 <div class="line"></div>
                 <span class="post-name">{{json.post_name}}</span>
@@ -95,7 +95,7 @@ export default {
         padding: 0 15.5%;
         color: white;
         /* background-color: orange; */
-        height: 30vh;
+
     }
 
     .align-row{
@@ -105,12 +105,18 @@ export default {
     /* main image */
     .content.project .main_image{
         width: 100vw;
+        /* height: calc(100vh - 15.5vh); */
         height: 100vh;
         /* background-color: green; */
+        position: relative;
     }
     .content.project .main_image img{
-        width: 100%;
-        height: 100%; 
+        width: 100vw;
+        height: 100vh; 
+        z-index:-3;
+        position: absolute;
+        top:-15.5%;
+        left:-15.5%;
     }
 
     /* main content */
@@ -146,6 +152,14 @@ export default {
         color: #A6A6A6;
         font-size: 22px;
     }
+
+    .content.project .line{
+        width: 45px;
+        height: 1px;
+        background-color: white;
+        margin: auto 10px;
+    }
+
     /* next project */
     .content.project .next-project{
 

@@ -1,5 +1,10 @@
+html{
+    height: fit-content;
+}
 body{
     width: 100vw;
+    /* height: 100vh; */
+    min-height: 100% !important;
     height: 100%;
     background-color: black;
     margin: 0;
@@ -83,7 +88,7 @@ a.logo{
     Main animation 
 */
 div.home-animation-window{
-    z-index: -2;
+    z-index: -4;
     position: absolute;
     width: 100vw;
     height: 100%;
