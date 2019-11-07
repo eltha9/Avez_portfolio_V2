@@ -38,7 +38,8 @@
         flex-direction: row;
     }
     .navigation{
-        width: 100vw;
+        /* width: 100vw; */
+        width: calc(1vw * 13.8 *5);
         height: 20vh;
         padding: 0 15.5%;
         position: absolute;

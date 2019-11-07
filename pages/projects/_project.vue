@@ -2,8 +2,8 @@
     <div class="container">
         <Head />
         <div class="content project">
-            <div class="main_image">
-                <img src="~/assets/images/projet-thib/Thib_project.png" :alt="json.page_title + 'Home page'">
+            <div class="main_image taille-5">
+                <img :src="json.main_image" :alt="json.page_title + 'Home page'">
             </div>
             <h1 class="page-title">{{json.page_title}}</h1>
             <div class="row taille-1 align-row">
@@ -104,9 +104,9 @@ export default {
     }
     /* main image */
     .content.project .main_image{
-        width: 100vw;
+        /* width: 100vw; */
         /* height: calc(100vh - 15.5vh); */
-        height: 100vh;
+        height: calc(100vh - 15.5vh);
         /* background-color: green; */
         position: relative;
     }
@@ -115,8 +115,9 @@ export default {
         height: 100vh; 
         z-index:-3;
         position: absolute;
-        top:-15.5%;
-        left:-15.5%;
+        /* top:-16.5vh; -15.5*/
+        top: -25.5%;
+        left:-15.5vw;
     }
 
     /* main content */
