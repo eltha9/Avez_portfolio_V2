@@ -23,7 +23,15 @@
         
 
         <div class="right-bloc taille-sup-right">
-
+            <div class="side-diapo">
+                <div class="slider">
+                    
+                    <div class="slide">
+                        <img src="" alt="">
+                    </div>
+                    <div class="slide"></div>
+                </div>
+            </div>
         </div>
     </div>    
   </div>
@@ -95,21 +103,36 @@ body{
 
 /* side bloc common */
 .side-diapo{
-
+    position: relative;
+    height: 40vh;
+    width: 50vw;
+    background-color: blue;
 }
 .side-diapo .slider{
+    position: absolute;
+    top:0;
+    left: 0;
 
 }
 .side-diapo .slider .slide{
-
+    height: 40vh;
+    width: 50vw;
 }
 .side-diapo .slider .slide img{
-
+    height: 100%;
+    width: 100%;
 }
+
 /* bloc left */
 .content.index .left-bloc{
     height: 100%;
     background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content.index .left-bloc .side-diapo{
+    transform: translateX(-60%);
 }
 
 
@@ -117,5 +140,11 @@ body{
 .content.index .right-bloc{
     height: 100%;
     background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content.index .right-bloc .side-diapo{
+    transform: translateX(60%);
 }
 </style>
