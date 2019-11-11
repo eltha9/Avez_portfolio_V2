@@ -2,8 +2,29 @@
   <div class="container">
     <Head />
     
-    <div class="content index">
+    <div class="content index align-row">
+        <div class="left-bloc taille-sup-left">
+            <div class="side-diapo">
+                <div class="slider">
+                    <div class="slide"></div>
+                    <div class="slide">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="taille-5" style="padding-top: 10%; height:100%;">
+            <div class="central-bloc taille-5">
+                
+            </div>
+
+        </div>
+        
+
+        <div class="right-bloc taille-sup-right">
+
+        </div>
     </div>    
   </div>
 </template>
@@ -18,13 +39,15 @@ export default {
         .then(r => r.json())
         .then(json => {
             this.projects = json
-
+            let json_temp = [... json]
+            this.nb_project = json_temp.length
         })
 
     },
     data(){
         return {
             projects: {},
+            nb_project: 0,
         }
     },
   components: {
@@ -35,20 +58,10 @@ export default {
 
 <style>
 body{
+    width:100vw;
+    height: 100vh;
     overflow: hidden;
 }
-/* common */
-    .content.index{
-        padding: 0 15.5%;
-        color: white;
-
-    }
-
-    .align-row{
-        display: flex;
-        flex-direction: row;
-    }
-
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -57,5 +70,52 @@ body{
   align-items: center;
   text-align: center;
   color: white
+}
+/* common */
+    .content.index{
+        /* padding: 0 15.5%; */
+        color: white;
+        /* background-color: orange; */
+        width: 100vw;
+        /* height: calc(1vh*(100 - 15.5)); */
+        height: 100vh;
+        position: relative;
+    }
+
+    .align-row{
+        display: flex;
+        flex-direction: row;
+    }
+
+/* bloc central */
+.content.index .central-bloc {
+    height: 80%;
+    background-color: green;
+}
+
+/* side bloc common */
+.side-diapo{
+
+}
+.side-diapo .slider{
+
+}
+.side-diapo .slider .slide{
+
+}
+.side-diapo .slider .slide img{
+
+}
+/* bloc left */
+.content.index .left-bloc{
+    height: 100%;
+    background: red;
+}
+
+
+/* bloc right */
+.content.index .right-bloc{
+    height: 100%;
+    background-color: red;
 }
 </style>

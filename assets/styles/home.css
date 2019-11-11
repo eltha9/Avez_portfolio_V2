@@ -82,6 +82,12 @@ a.logo{
 .taille-5{
     width: calc(1vw * 13.8 *5);
 }
+.taille-sup-left{
+    width: calc(1vw * 15.5);
+}
+.taille-sup-right{
+    width: calc(1vw * 15.5);
+}
 
 /* 
     Main animation 
