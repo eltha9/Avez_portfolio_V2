@@ -11,8 +11,8 @@
         </div>
         <a class="logo" href="/">gaetan avez.</a>
         <div class="social">
-            <a href="https://www.linkedin.com/in/gaetan-avez/" title="Gaëtan Avez - Linkedin"><img src="~/assets/images/linkedin.svg" alt="Linkedin logo"></a>
-            <a href="https://dribbble.com/GaetanAvez" title="Gaëtan Avez - Dribbble"><img src="~/assets/images/dribble.svg" alt="Dribbble logo"></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/gaetan-avez/" title="Gaëtan Avez - Linkedin" target="_blank"><img src="~/assets/images/linkedin.svg" alt="Linkedin logo"></a>
+            <a href="https://dribbble.com/GaetanAvez" title="Gaëtan Avez - Dribbble" target="_blank"><img src="~/assets/images/dribble.svg" alt="Dribbble logo"></a>
         </div>
         <div class="navigation align-row">
 

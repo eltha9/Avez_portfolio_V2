@@ -60,12 +60,13 @@ export default {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        padding-top: 10%;
+        /* padding-top: 10%; */
     }
 
     .content.contact{
         padding: 0 15.5%;
-        height: 80vh;
+        padding-top: 10%;
+        height:  calc(1vh*(100 - 15.5));
 
         color: white;
         display: flex;
@@ -122,14 +123,15 @@ export default {
     .content.contact form .bottom{
         position: absolute;
         right: 0;
-        bottom: 0;
-        
+        bottom: 5%;
+        cursor: pointer;
+
     }
     .content.contact .contact-row{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center
+        align-items: center;
     }
     .content.contact .bottom input[type = submit]{
         font-size: 24px;
@@ -138,6 +140,7 @@ export default {
         background-color: transparent;
         text-decoration: none;
         padding: 0;
+        cursor: pointer;
     }
     .content.contact .bottom img{
         vertical-align: middle;

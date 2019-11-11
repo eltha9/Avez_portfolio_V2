@@ -147,10 +147,12 @@ export default {
 
 <style>
 body{
-    padding-top:10%;
+    /* padding-top:10%; */
+    overflow-x: hidden;
 }
     .content.about{
-        padding: 0 15.5%;;
+        padding: 0 15.5%;
+        padding-top: 10%;
 
     }
     .content.about .align-row{
