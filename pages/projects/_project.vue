@@ -110,7 +110,7 @@ export default {
         /* background-color: green; */
         position: relative;
     }
-    .content.project .main_image img{
+    .content.project .main_image img{ /*reduction de la taille de la photo*/
         width: 100vw;
         height: 100vh; 
         z-index:-3;

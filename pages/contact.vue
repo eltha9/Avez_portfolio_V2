@@ -103,8 +103,9 @@ export default {
         font-size: 24px;
         color:white;
         
+        
     }
-    .content.contact textarea{
+    .content.contact textarea{ /* afficher une ligne blanche en dessous quand on clic dessus*/ 
         margin-top: 45px;
         font-size: 24px;
         width: 100%;
