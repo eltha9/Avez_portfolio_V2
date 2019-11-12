@@ -216,7 +216,7 @@
                     left_slide.previous()
                     big_slide.previous()
                     right_slide.previous()
-                    console.log(global_state)
+
                     dotState(global_state)
                 }
 
@@ -255,7 +255,6 @@
 
                 let stateNb = (id)=>{
                     state_node.innerHTML = `0${id+1}`
-                    console.log(state_node)
                 }
 
                 setTimeout(()=>{
