@@ -202,9 +202,11 @@
                 }
 
                 let goToSlide = (id)=>{
+                    
+                    id = parseInt(id)
                     left_slide.goTo(id)
                     big_slide.goTo(id)
-                    right_slide.goTo(id)
+                    right_slide.goTo(id+1)
                 }
 
                 let dotEvent = (dots)=>{
