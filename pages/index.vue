@@ -38,6 +38,10 @@
                             scroll to see more
                             <img src="~/assets/images/project_button.svg" alt="">
                         </div>
+
+                        <div class="state">
+                            01
+                        </div>
                     </div>
                 </div>
             </div>
@@ -175,7 +179,7 @@
 
                 let big_slide 
                 let dot
-
+                let state_node
 
                 let run = ()=>{
                     left_slider = content.querySelector('.left-bloc .side-diapo .slider')
@@ -183,6 +187,7 @@
                     big_slider = content.querySelector('.central-bloc .big-diapo .slider')
                     title = content.querySelector('.central-bloc a.project-title')
                     dots = content.querySelectorAll('.central-bloc .dots .dot')
+                    state_node = content.querySelector('.central-bloc .state')
 
                     left_slide = new Slider(left_slider,'vw',60,left_slider.querySelectorAll('.slide')  )
 
@@ -207,11 +212,11 @@
                 }
 
                 let previousSlide = ()=>{
-                    global_state--
+                    global_state --
                     left_slide.previous()
                     big_slide.previous()
                     right_slide.previous()
-
+                    console.log(global_state)
                     dotState(global_state)
                 }
 
@@ -244,6 +249,13 @@
                         dots[j].classList.remove('current')
                     }
                     dots[id].classList.add('current')
+                    stateNb(id)
+                }
+
+
+                let stateNb = (id)=>{
+                    state_node.innerHTML = `0${id+1}`
+                    console.log(state_node)
                 }
 
                 setTimeout(()=>{
@@ -414,6 +426,25 @@ body{
 
 }
 
+
+.content.index .central-bloc .state{
+    position: absolute;
+    bottom: 0;
+    right: -9.5%;
+    transform: translateY(20%);
+    font-family: Arial Black;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 86px;
+    /* line-height: 121px; */
+    text-align: center;
+
+    /* color: black; */
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    z-index: -3;
+
+}
 
 /* side bloc common */
 .side-diapo{
