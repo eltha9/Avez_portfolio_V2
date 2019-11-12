@@ -33,6 +33,11 @@
                         <div class="dots">
                             <div class="dot" v-for="item in projects"></div>
                         </div>
+
+                        <div class="scroll-to-see taille-1">
+                            scroll to see more
+                            <img src="~/assets/images/project_button.svg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -188,17 +193,26 @@
                     dotEvent(dots)
                 }
 
+                let global_state = 0
+
                 //slider function
                 let nextSlide = ()=>{
+                    global_state ++
+
                     left_slide.next()
                     big_slide.next()
                     right_slide.next()
+
+                    dotState(global_state)
                 }
 
                 let previousSlide = ()=>{
+                    global_state--
                     left_slide.previous()
                     big_slide.previous()
                     right_slide.previous()
+
+                    dotState(global_state)
                 }
 
                 let goToSlide = (id)=>{
@@ -207,6 +221,7 @@
                     left_slide.goTo(id)
                     big_slide.goTo(id)
                     right_slide.goTo(id+1)
+                    dotState(id)
                 }
 
                 let dotEvent = (dots)=>{
@@ -215,10 +230,6 @@
                         dots[i].dataset.slideNb = i
                         dots[i].addEventListener('click', (event)=>{
                             event.preventDefault()
-                            for(let j =0; j<dots.length; j++){
-                                dots[j].classList.remove('current')
-                            }
-                            dots[i].classList.add('current')
 
                             const state = dots[i].dataset.slideNb
                             goToSlide(state)
@@ -226,6 +237,13 @@
                             
                         })
                     }
+                }
+
+                let dotState = (id)=>{
+                    for(let j =0; j<dots.length; j++){
+                        dots[j].classList.remove('current')
+                    }
+                    dots[id].classList.add('current')
                 }
 
                 setTimeout(()=>{
@@ -370,6 +388,32 @@ body{
 .content.index .central-bloc .dots .dot.current{
     border: 1.3px solid #979797;
 }
+
+.content.index .central-bloc .scroll-to-see{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY( calc(100% + 30px ));
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    text-transform: uppercase;
+    font-size: 12px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+.content.index .central-bloc .scroll-to-see img{
+    width: 26px;
+    height: 26px;
+
+    transform: translateY(-25%);
+
+}
+
 
 /* side bloc common */
 .side-diapo{
