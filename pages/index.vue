@@ -18,7 +18,7 @@
 
         <div class="taille-5" style="padding-top: 10%; height:100%;">
             <div class="central-bloc taille-5">
-                <div style="position: absolute;width:60vw; right:0; bottom:0;">
+                <div style="position: absolute; right:0; bottom:0;">
                     <div style="position:relative">
                         <a  href="" class="project-title"></a>
                         <div class="big-diapo">
@@ -28,6 +28,10 @@
                                     <div class="space" style=""></div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="dots">
+                            <div class="dot" v-for="item in projects"></div>
                         </div>
                     </div>
                 </div>
@@ -88,14 +92,14 @@
                 }
 
                 class BigSlider extends Slider{
-                    constructor(node, xType ,width, nb ,titleNode, dot_node = null, other_button = null,start_state =0, y_translation = 0, yType= '%'){
+                    constructor(node, xType ,width, nb ,titleNode, other_button = null,start_state =0, y_translation = 0, yType= '%'){
                         super(node, xType, width, nb)
-                        this.dot_node = dot_node
+
                         this.slides = nb
                         this.title = titleNode
-                        //this.dots = this.dot_node.querySelectorAll('.dot')
 
-                        //this.dotEvent()
+
+
                         this.titleChange()
                         if(other_button !== null){
                           //  this.otherButtonEvent()
@@ -117,15 +121,6 @@
                         this.titleChange()
                     }
 
-                    dotEvent(){
-                        for(let i=0; i<this.dots.length; i++){
-                            this.dots.dataset.slideNb = i
-                            this.dots[i].addEventListener('click', (event)=>{
-                                event.preventDefault()
-                                this.goTo(this.dots[i].dataset.slideNb)
-                            })
-                        }
-                    }
 
                     otherButtonEvent(){
                         this.other_button.addEventListener('click', (event)=>{
@@ -174,6 +169,7 @@
                 let right_slide 
 
                 let big_slide 
+                let dot
 
 
                 let run = ()=>{
@@ -181,12 +177,15 @@
                     right_slider = content.querySelector('.right-bloc .side-diapo .slider')
                     big_slider = content.querySelector('.central-bloc .big-diapo .slider')
                     title = content.querySelector('.central-bloc a.project-title')
+                    dots = content.querySelectorAll('.central-bloc .dots .dot')
 
-                    left_slide = new Slider(left_slider,'vw',50,left_slider.querySelectorAll('.slide')  )
+                    left_slide = new Slider(left_slider,'vw',60,left_slider.querySelectorAll('.slide')  )
 
-                    right_slide = new Slider(right_slider,'vw',50,right_slider.querySelectorAll('.slide'),1 )
+                    right_slide = new Slider(right_slider,'vw',60,right_slider.querySelectorAll('.slide'),1 )
 
-                    big_slide = new BigSlider(big_slider, 'vw', 60, [...big_slider.querySelectorAll('.slide')],title )
+                    big_slide = new BigSlider(big_slider, 'vw', 63, [...big_slider.querySelectorAll('.slide')],title )
+
+                    dotEvent(dots)
                 }
 
                 //slider function
@@ -205,12 +204,32 @@
                 let goToSlide = (id)=>{
                     left_slide.goTo(id)
                     big_slide.goTo(id)
-                    right_slide.goTo(id+1)
+                    right_slide.goTo(id)
                 }
+
+                let dotEvent = (dots)=>{
+                    dots[0].classList.add('current')
+                    for(let i=0; i<dots.length; i++){
+                        dots[i].dataset.slideNb = i
+                        dots[i].addEventListener('click', (event)=>{
+                            event.preventDefault()
+                            for(let j =0; j<dots.length; j++){
+                                dots[j].classList.remove('current')
+                            }
+                            dots[i].classList.add('current')
+
+                            const state = dots[i].dataset.slideNb
+                            goToSlide(state)
+
+                            
+                        })
+                    }
+                }
+
                 setTimeout(()=>{
                     run()
                     console.info("runnig")
-                },1000)
+                },500)
         </script>
     </client-only>
   </div>
@@ -282,8 +301,8 @@ body{
     position: relative;
 }
 .content.index .central-bloc .big-diapo{
-    height: 66vh;
-    width: 66vw;
+    height: 75vh;
+    width: 63vw;
     clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
     position: relative;
 }
@@ -301,8 +320,8 @@ body{
 }
 
 .content.index .central-bloc .big-diapo .slider .slide{
-    height: 66vh;
-    width: 66vw;
+    height: 75vh;
+    width: 63vw;
 
 }
 .content.index .central-bloc .big-diapo .slider .slide img{
@@ -322,15 +341,43 @@ body{
     font-weight: bold;
 }
 
+
+.content.index .central-bloc .dots{
+    position: absolute;
+    left:0;
+    bottom: 0;
+    transform: translateY( calc(100% + 30px ));
+
+    display: flex;
+    flex-direction: row;
+}
+.content.index .central-bloc .dots .dot{
+    width: 10px;
+    height: 10px;
+    background-color: #191919;
+    border-radius: 50%;
+    border: none;
+
+    margin-right: 4px;
+
+    cursor: pointer;
+    will-change: border;
+
+    transition: border 0.3s ease-out;
+}
+.content.index .central-bloc .dots .dot.current{
+    border: 1.3px solid #979797;
+}
+
 /* side bloc common */
 .side-diapo{
     position: relative;
-    height: 40vh;
+    height: 50vh;
     width: 50vw;
     /* background-color: blue; */
     transform: translateY(0);
-    clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
-    margin-top:100%;
+    clip-path: polygon(1% 0%, 99% 0%, 99% 100%, 1% 100%);
+    margin-top:50%;
 }
 .side-diapo .slider{
     position: absolute;
@@ -345,8 +392,8 @@ body{
     transform: translateX(0);
 }
 .side-diapo .slider .slide{
-    height: 40vh;
-    width: 50vw;
+    height: 50vh;
+    width: 60vw;
 }
 .side-diapo .slider .slide img{
     height: 100%;
