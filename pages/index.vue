@@ -10,6 +10,7 @@
                     <div class="slide"></div>
                     <div class="slide" v-for="item in projects">
                         <img :src="item.project_img" alt="" >
+                        <div class="space" style=""></div>
                     </div>
                 </div>
             </div>
@@ -18,11 +19,14 @@
         <div class="taille-5" style="padding-top: 10%; height:100%;">
             <div class="central-bloc taille-5">
                 <div style="position: absolute;width:60vw; right:0; bottom:0;">
-                    <div class="big-diapo">
-                        <h2 class="project-title"></h2>
-                        <div class="slider" style="transform:translate(0,0)">
-                            <div class="slide" v-for="item in projects" :data-title="item.project_title" >
-                                <img :src="item.project_img" alt="" >
+                    <div style="position:relative">
+                        <a  href="" class="project-title"></a>
+                        <div class="big-diapo">
+                            <div class="slider" style="transform:translate(0,0)">
+                                <div class="slide" v-for="item in projects" :data-title="item.project_title" :data-href="item.project_url" >
+                                    <img :src="item.project_img" alt="" >
+                                    <div class="space" style=""></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -51,45 +55,66 @@
                     constructor(node, xType ,width, nb, start_state =0, y_translation = 0, yType= '%'){
                         this.node = node
                         this.width = width
-                        this.nb = nb
+                        this.nb = nb.length
                         this.xType = xType
                         this.yType = yType
-
                         this.state = start_state
                         this.y = y_translation
 
                         if(start_state !== 0 ){
+                            
                             this.goTo(start_state)
                         }
                     }
 
                     next(){
-                        this.state ++
-                        this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${this.y}${this.yType} )`
+                        //if(this.state < this.nb){
+                            this.state ++
+                            this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${this.y}${this.yType} )`
+                        //}
                     }
 
                     previous(){
-                        this.state --
-                        this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${ this.y}${this.yType} )`
+                       // if(this.state > 0){
+                            this.state --
+                            this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${ this.y}${this.yType} )`
+                        //}
                     }
 
                     goTo(id){
-                        this.node.style.transform= `translate( ${this.width* id}${this.xType},${ this.y}${this.yType} )`
+                        this.state = id
+                        this.node.style.transform= `translate( -${this.width* id}${this.xType},${ this.y}${this.yType} )`
                     }
                 }
 
                 class BigSlider extends Slider{
-                    constructor(dot_node, other_button = null){
-                        //super()
+                    constructor(node, xType ,width, nb ,titleNode, dot_node = null, other_button = null,start_state =0, y_translation = 0, yType= '%'){
+                        super(node, xType, width, nb)
                         this.dot_node = dot_node
-                        this.dots = this.dot_node.querySelectorAll('dot')
+                        this.slides = nb
+                        this.title = titleNode
+                        //this.dots = this.dot_node.querySelectorAll('.dot')
 
-                        this.dotEvent()
-
+                        //this.dotEvent()
+                        this.titleChange()
                         if(other_button !== null){
-                            this.otherButtonEvent()
+                          //  this.otherButtonEvent()
                         }
+                        //console.log(this.nb)
+                        //console.log(this)
 
+                    }
+                    next(){
+                        super.next()
+                        this.titleChange()
+                    }
+                    previous(){
+                        super.previous()
+                        this.titleChange()
+                    }
+                    goTo(id){
+                        super.goTo(id)
+                        this.titleChange()
                     }
 
                     dotEvent(){
@@ -124,27 +149,68 @@
                     }
 
                     titleChange(){
+                        const urlPrefix = "/projects/"
+                        this.title.innerHTML = this.slides[this.state].dataset.title
+                        this.title.href = `${urlPrefix}${this.slides[this.state].dataset.href}`
+                        console.log( this.slides[this.state].dataset.title)
                         
                     }
                 }
 
+
+
                 //CODE
 
-                // SLIDER
+                // slider
                 let content = document.querySelector('.content.index')
 
-                const left_slider = content.querySelector('.left-bloc .side-diapo .slider')
-                const right_slider = content.querySelector('.right-bloc .side-diapo .slider')
-                const big_slider = content.querySelector('.central-bloc .big-diapo .slider')
+                let left_slider 
+                let right_slider 
+                let big_slider 
+                let title 
 
-                let left_slide = new Slider(left_slider,'vw',50,left_slider.querySelectorAll('.slide').length )
+                let left_slide 
 
-                let right_slide = new Slider(right_slider,'vw',50,right_slider.querySelectorAll('.slide').length )
+                let right_slide 
 
-                //let big_slide = new BigSlider()
+                let big_slide 
 
-                
 
+                let run = ()=>{
+                    left_slider = content.querySelector('.left-bloc .side-diapo .slider')
+                    right_slider = content.querySelector('.right-bloc .side-diapo .slider')
+                    big_slider = content.querySelector('.central-bloc .big-diapo .slider')
+                    title = content.querySelector('.central-bloc a.project-title')
+
+                    left_slide = new Slider(left_slider,'vw',50,left_slider.querySelectorAll('.slide')  )
+
+                    right_slide = new Slider(right_slider,'vw',50,right_slider.querySelectorAll('.slide'),1 )
+
+                    big_slide = new BigSlider(big_slider, 'vw', 60, [...big_slider.querySelectorAll('.slide')],title )
+                }
+
+                //slider function
+                let nextSlide = ()=>{
+                    left_slide.next()
+                    big_slide.next()
+                    right_slide.next()
+                }
+
+                let previousSlide = ()=>{
+                    left_slide.previous()
+                    big_slide.previous()
+                    right_slide.previous()
+                }
+
+                let goToSlide = (id)=>{
+                    left_slide.goTo(id)
+                    big_slide.goTo(id)
+                    right_slide.goTo(id+1)
+                }
+                setTimeout(()=>{
+                    run()
+                    console.info("runnig")
+                },1000)
         </script>
     </client-only>
   </div>
@@ -212,12 +278,12 @@ body{
 /* bloc central */
 .content.index .central-bloc {
     height: 75%;
-    background-color: green;
+    /* background-color: green; */
     position: relative;
 }
 .content.index .central-bloc .big-diapo{
-    height: 60vh;
-    width: 60vw;
+    height: 66vh;
+    width: 66vw;
     clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
     position: relative;
 }
@@ -231,11 +297,12 @@ body{
     left:0;
     display: flex;
     flex-direction: row;
+    z-index: 30;
 }
 
 .content.index .central-bloc .big-diapo .slider .slide{
-    height: 60vh;
-    width: 60vw;
+    height: 66vh;
+    width: 66vw;
 
 }
 .content.index .central-bloc .big-diapo .slider .slide img{
@@ -243,7 +310,17 @@ body{
     width: 100%;
 }
 
+.content.index .central-bloc  .project-title{
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    top:0%;
+    left:0;
+    transform: translateY(-100%);
 
+    font-size: 22px;
+    font-weight: bold;
+}
 
 /* side bloc common */
 .side-diapo{
@@ -253,6 +330,7 @@ body{
     /* background-color: blue; */
     transform: translateY(0);
     clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+    margin-top:100%;
 }
 .side-diapo .slider{
     position: absolute;
