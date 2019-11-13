@@ -211,16 +211,7 @@
 
                     dotEvent(dots)
 
-                    window.addEventListener('wheel', (event)=>{
-                        console.log(`x ${event.deltaX}, y ${event.deltaY} `)
-
-                        if( event.deltaX <0 || event.deltaY > 0 ){
-                            previousSlide()
-                        }else if(event.deltaX >0 || event.deltaY < 0){
-                            nextSlide()
-                        }
-
-                    })
+                    
 
                     document.addEventListener('keydown', (event)=>{
 
@@ -232,6 +223,21 @@
                     })
 
                 }
+
+                let scrool_main_event = window.addEventListener('wheel', (event)=>{
+                        window.removeEventListener('wheel', ()=>{}, true)
+                            console.log(`x ${event.deltaX}, y ${event.deltaY} `)
+
+                            if( event.deltaX <0 || event.deltaY > 0 ){
+                                previousSlide()
+                            }else if(event.deltaX >0 || event.deltaY < 0){
+                                nextSlide()
+                            }
+
+
+                        setTimeout(scrool_main_event, 600)
+
+                    })
 
                 let global_state = 0
 

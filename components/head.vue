@@ -60,6 +60,7 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 21px;
+        mix-blend-mode: difference;
     }
 
 </style>

@@ -1,22 +1,26 @@
 [
     {
         "project_title": "Candy’Up Bio",
-        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-candia/Candia_project.png",
+        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-candia/Candia_preview_mobile.png",
+        "project_img_responsive":"http://cdn.elph.fr/dfhjk567FH/projet-candia/Candia_preview_mobile.png",
         "project_url": "candy_up"
     },
     {
         "project_title": "Golden Sludge Alliance",
-        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-golden-sludge/Golden_project.png",
+        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-golden-sludge/Golden_preview_desktop.png",
+        "project_img_responsive":"http://cdn.elph.fr/dfhjk567FH/projet-sludge/Golden_preview_mobile.png",
         "project_url": "golden_sludge"
     },
     {
         "project_title": "Concept page unsplash",
-        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_project.png",
+        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_preview_desktop.png",
+        "project_img_responsive":"http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_preview_mobile.png",
         "project_url": "unsplash"
     },
     {
         "project_title": "Thibault’s Richard portfolio",
-        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-thib/Thib_project.png",
+        "project_img":"http://cdn.elph.fr/dfhjk567FH/projet-thib/Thib_preview_desktop.png",
+        "project_img_responsive":"http://cdn.elph.fr/dfhjk567FH/projet-thib/Thib_preview_mobile.png",
         "project_url": "thibault_richard_portfolio"
     }
 ]
