@@ -10,6 +10,8 @@
                     <div class="slide"></div>
                     <div class="slide" v-for="item in projects">
                         <img :src="item.project_img" alt="" >
+                        <img :src="item.project_img_responsive" class="repsonsive_image" alt="" >
+
                         <div class="space" style=""></div>
                     </div>
                 </div>
@@ -25,6 +27,8 @@
                             <div class="slider" style="transform:translate(0,0)">
                                 <div class="slide" v-for="item in projects" :data-title="item.project_title" :data-href="item.project_url" >
                                     <img :src="item.project_img" alt="" >
+                                    <img :src="item.project_img_responsive" class="repsonsive_image" alt="" >
+
                                     <div class="space" style=""></div>
                                 </div>
                             </div>
@@ -55,6 +59,7 @@
                     
                     <div class="slide" v-for="item in projects">
                         <img :src="item.project_img" alt="">
+                        <img :src="item.project_img_responsive" class="repsonsive_image" alt="" >
                     </div>
                     <div class="slide"></div>
                 </div>
@@ -411,6 +416,9 @@ body{
     height: 100%;
     width: 100%;
 }
+.content.index .central-bloc .big-diapo .slider .slide img.responsive_image{
+    display: none;
+}
 
 .content.index .central-bloc  .project-title{
     position: absolute;
@@ -559,4 +567,11 @@ body{
 .content.index .right-bloc .side-diapo .slider{
     transform: translate(0,0);
 }
+
+ @media screen and (max-width: 1024px) {
+        .content.index{
+            display: none;
+        }
+    }
+
 </style>
