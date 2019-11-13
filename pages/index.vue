@@ -81,22 +81,32 @@
                     }
 
                     next(){
-                        //if(this.state < this.nb){
-                            this.state ++
-                            this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${this.y}${this.yType} )`
-                        //}
+                        if((this.state +1) == this.nb ){
+                            return false
+                        }
+
+                        this.state ++
+                        this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${this.y}${this.yType} )`
+                        return true
                     }
 
                     previous(){
-                       // if(this.state > 0){
+                        if((this.state -1) < 0 ){
+                            return false
+                        }
                             this.state --
                             this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${ this.y}${this.yType} )`
-                        //}
+                        return true
                     }
 
                     goTo(id){
+                        if(id <0 || id>=this.nb  ){
+                            return false    
+                        }
+
                         this.state = id
                         this.node.style.transform= `translate( -${this.width* id}${this.xType},${ this.y}${this.yType} )`
+                        return true
                     }
                 }
 
@@ -181,6 +191,8 @@
                 let dot
                 let state_node
 
+                let number_slide
+
                 let run = ()=>{
                     left_slider = content.querySelector('.left-bloc .side-diapo .slider')
                     right_slider = content.querySelector('.right-bloc .side-diapo .slider')
@@ -189,6 +201,8 @@
                     dots = content.querySelectorAll('.central-bloc .dots .dot')
                     state_node = content.querySelector('.central-bloc .state')
 
+                    number_slide = big_slider.querySelectorAll('.slide').length
+
                     left_slide = new Slider(left_slider,'vw',60,left_slider.querySelectorAll('.slide')  )
 
                     right_slide = new Slider(right_slider,'vw',60,right_slider.querySelectorAll('.slide'),1 )
@@ -196,12 +210,37 @@
                     big_slide = new BigSlider(big_slider, 'vw', 63, [...big_slider.querySelectorAll('.slide')],title )
 
                     dotEvent(dots)
+
+                    window.addEventListener('wheel', (event)=>{
+                        console.log(`x ${event.deltaX}, y ${event.deltaY} `)
+
+                        if( event.deltaX <0 || event.deltaY > 0 ){
+                            previousSlide()
+                        }else if(event.deltaX >0 || event.deltaY < 0){
+                            nextSlide()
+                        }
+
+                    })
+
+                    document.addEventListener('keydown', (event)=>{
+
+                        if(event.keyCode === 39){
+                            nextSlide()
+                        }else if(event.keyCode === 37){
+                            previousSlide()
+                        }
+                    })
+
                 }
 
                 let global_state = 0
 
                 //slider function
                 let nextSlide = ()=>{
+                    if((global_state +1) == number_slide){
+                        return false
+                    } 
+
                     global_state ++
 
                     left_slide.next()
@@ -212,6 +251,10 @@
                 }
 
                 let previousSlide = ()=>{
+                    if((global_state -1) < 0){
+                        return false
+                    }
+
                     global_state --
                     left_slide.previous()
                     big_slide.previous()
@@ -221,7 +264,10 @@
                 }
 
                 let goToSlide = (id)=>{
-                    
+                    if(id< 0 || id>=number_slide){
+                        return false
+                    }
+
                     id = parseInt(id)
                     left_slide.goTo(id)
                     big_slide.goTo(id)
@@ -370,6 +416,7 @@ body{
 
     font-size: 22px;
     font-weight: bold;
+    z-index: 9000;
 }
 
 
