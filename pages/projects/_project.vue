@@ -31,9 +31,11 @@
                 </div>
             </div>
             <div class="row align-row">
-                <div class="taille-2">
-                    <img class="mockup" src="" alt="">
-                    <img class="inside-mockup" src="" alt="">
+                <div class="taille-2 mockup-div">
+                    <img class="mockup" src="~/assets/images/mockup_png.png" alt="">
+                    <div class="inside-mockup">
+                        <img  :src="json.project_mockup_img" alt="">
+                    </div>
                 </div>
                 <div v-html="json.project_main_text" class="taille-3 project-main-text">
                 </div>
@@ -152,6 +154,7 @@ export default {
     .content.project .project-main-text{
         color: #A6A6A6;
         font-size: 22px;
+
     }
 
     .content.project .line{
@@ -159,6 +162,34 @@ export default {
         height: 1px;
         background-color: white;
         margin: auto 10px;
+    }
+
+    .content.project .mockup-div{
+        position: relative;
+    }
+    .content.project .mockup-div .mockup{
+        position: absolute;
+        top:0;
+        left: 0;
+        z-index: 70;
+        width: calc(13.8vw *1.5);
+        
+    }
+    .content.project .mockup-div .inside-mockup{
+        position: absolute;
+        z-index: 60;
+        top:50%;
+        left: 50%;
+
+        transform: translate(-50%,-50%);
+
+        width: calc(13.8vw *1.5);
+        height: 100%;
+        overflow-y:scroll;
+    }
+    .content.project .mockup-div .inside-mockup{
+        width: calc(13.8vw *1.5);
+        height: 100%;
     }
 
     /* next project */
