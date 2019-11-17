@@ -15,12 +15,12 @@
         <div class="content project">
             <div class="main_image taille-5"></div>
             <h1 class="page-title">{{json.page_title}}</h1>
-            <div class="row taille-1 align-row">
+            <div class="row taille-1 align-row ux">
                 <span class="post-type">{{json.post_type}}</span>
                 <div class="line"></div>
                 <span class="post-name">{{json.post_name}}</span>
             </div>
-            <div class="row align-row taille-5">
+            <div class="row align-row taille-5 chapeau">
                 <div class="taille-1 project-date">
                     {{json.project_date}}
                 </div>
@@ -32,10 +32,7 @@
                 </div>
             </div>
             <div class="row align-row">
-                <div class="taille-1" >
-
-                </div>
-                <div class="taille-4">
+                <div class="taille-5 project-slogan-container">
                     <h2 class="project-slogan">{{json.project_slogan}}</h2>
                 </div>
             </div>
@@ -60,6 +57,40 @@
                 <!-- <img src="" alt="">{{next.img}} -->
                 </div>
             </div>
+            <client-only>
+                <script>
+                    const project_container = document.querySelector('.content.project')
+                    let project_slogan =  {
+                        node : project_container.querySelector('.project-slogan')
+                        
+                        }
+                    let slogan_direction = 0
+                    let window_height = window.innerHeight
+                    project_slogan.bouding = project_slogan.node.getBoundingClientRect()
+
+                    window.addEventListener('rezise', ()=>{
+                        window_height = window.innerHeight
+                        project_slogan.bouding = project_slogan.node.getBoundingClientRect()
+                    })
+
+                    window.addEventListener('scroll', (event)=>{
+                        project_slogan.bouding = project_slogan.node.getBoundingClientRect()
+                        //console.log(`top : ${project_slogan.bouding.top}, height:${window_height}`)
+                        if( project_slogan.bouding.top < window_height){
+                            slogan_direction =  project_slogan.bouding.top - window_height 
+
+                            /*if(slogan_direction > 0){
+                                slogan_direction = 0
+                            }
+                                voir avec gaetan pour le scroll si il faut l'arreter ou non
+                            */
+
+                            project_slogan.node.style.right = `${slogan_direction}px`
+                        }
+
+                    })
+                </script>
+            </client-only>
         </div>
     </div>
 </template>
@@ -176,6 +207,7 @@ export default {
         color: white;
         font-size: 64px;
         margin-top: 120px;
+        margin-bottom: 7px;
     }
     .content.project .post-type{
         color:white;
@@ -197,10 +229,23 @@ export default {
         color: #A6A6A6;
         font-size: 22px;
     }
-    .content.project .project-slogan{
+
+    .content.project .project-slogan-container{
+        position: relative;
+        height: 64px;
+        margin-bottom: 100px;
+    }
+    .content.project .project-slogan-container .project-slogan{
+        position: absolute;
+        top:0;
+        right: 0;
         color: white;
         font-size: 64px;
+        white-space: nowrap;
+        will-change: right;
     }
+
+
     .content.project .project-main-text{
         color: #A6A6A6;
         font-size: 22px;
@@ -260,4 +305,14 @@ export default {
     .content.project .next-project .image-next img{
         width: 100%;
     }
+
+    /* bloc margin  */
+    .content.project .ux{
+        margin-bottom: 74px;
+    }   
+
+    .content.project .chapeau{
+        margin-bottom: 46px;
+    } 
+
 </style>
