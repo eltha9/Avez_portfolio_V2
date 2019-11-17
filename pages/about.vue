@@ -149,6 +149,7 @@ export default {
 body{
     /* padding-top:10%; */
     overflow-x: hidden;
+    height: content;
 }
     .content.about{
         padding: 0 15.5%;
@@ -245,7 +246,7 @@ body{
     }
 
     .content.about .skills{
-        margin-bottom: 66px;
+        padding-bottom: 66px;
     }
 
     .content.about .skills .title{

@@ -129,9 +129,10 @@ export default {
     body{
         width: 100vw;
         height: 100%;
+        /* height: content; */
 
         padding-top: 10%;
-        /* overflow-x: hidden; */
+        overflow-x: hidden;
     }
     /* common */
     .content.project{
