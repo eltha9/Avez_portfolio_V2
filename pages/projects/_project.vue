@@ -1,10 +1,19 @@
 <template>
     <div class="container">
         <Head />
-        <div class="content project">
-            <div class="main_image taille-5">
+        <div class="main-image-to-body">
+            <div style="position:relative;width:100%; height:100%;">
+
                 <img :src="json.main_image" :alt="json.page_title + 'Home page'">
+                <div class="call-to-scroll">
+                    <span class="text">scroll</span>
+                    <span class="vertical-bar"></span>
+                </div>
             </div>
+            
+        </div>
+        <div class="content project">
+            <div class="main_image taille-5"></div>
             <h1 class="page-title">{{json.page_title}}</h1>
             <div class="row taille-1 align-row">
                 <span class="post-type">{{json.post_type}}</span>
@@ -91,6 +100,7 @@ export default {
         height: 100%;
 
         padding-top: 10%;
+        /* overflow-x: hidden; */
     }
     /* common */
     .content.project{
@@ -104,6 +114,45 @@ export default {
         display: flex;
         flex-direction: row;
     }
+
+    .main-image-to-body{
+        position: absolute;
+        top:0;
+        left: 0;
+        z-index: 0;
+        height: 104vh;
+        width: 100vw;
+    }
+    .main-image-to-body img{
+        height: 100%;
+        width: 100%;
+    }
+    .main-image-to-body .call-to-scroll{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .main-image-to-body .call-to-scroll .text{
+        text-transform: uppercase;
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 16px;
+        mix-blend-mode: difference;
+    }
+    .main-image-to-body .call-to-scroll .vertical-bar{
+        width:4px;
+        height: 40px;
+        background-color: black;
+        mix-blend-mode: difference;
+    }
+
+
     /* main image */
     .content.project .main_image{
         /* width: 100vw; */
@@ -114,7 +163,7 @@ export default {
     }
     .content.project .main_image img{ /*reduction de la taille de la photo*/
         width: 100vw;
-        height: 100vh; 
+        /* height: 100vh;  */
         z-index:-3;
         position: absolute;
         /* top:-16.5vh; -15.5*/
@@ -123,9 +172,10 @@ export default {
     }
 
     /* main content */
-    .content.project .page-title{
+    .content.project h1.page-title{
         color: white;
         font-size: 64px;
+        margin-top: 120px;
     }
     .content.project .post-type{
         color:white;
