@@ -42,19 +42,24 @@
                     <div class="inside-mockup">
                         <img  :src="json.project_mockup_img" alt="">
                     </div>
+
                 </div>
                 <div v-html="json.project_main_text" class="taille-3 project-main-text">
                 </div>
             </div>
             <div class="bottom-images row">
-                
+                <div class="border">
+                    <div class="inside">
+                        <img v-for="image in json.project_bottom_img" :src="image" alt="">
+                    </div>
+                </div>
             </div>
 
             <div class="next-project taille-5 row">
                 <h3>Next project:</h3>
-                <!-- <a href="{{next.link}}">{{next.name}}</a> -->
+                <a :href="json.next_project_link" >{{json.next_project_name}}</a>
                 <div class="taille_5 image-next">
-                <!-- <img src="" alt="">{{next.img}} -->
+                    <img :src="json.next_project_img" alt="">
                 </div>
             </div>
             <client-only>
@@ -74,6 +79,11 @@
                     })
 
                     window.addEventListener('scroll', (event)=>{
+                            slogan(event)
+
+                    })
+
+                    let slogan = (event) =>{
                         project_slogan.bouding = project_slogan.node.getBoundingClientRect()
                         //console.log(`top : ${project_slogan.bouding.top}, height:${window_height}`)
                         if( project_slogan.bouding.top < window_height){
@@ -87,7 +97,52 @@
 
                             project_slogan.node.style.right = `${slogan_direction}px`
                         }
+                    }
 
+                    let paralax = (event)=>{
+
+                    }
+
+                    //mockup scroll
+
+                    const mockup_div = project_container.querySelector('.mockup-div')
+
+                    let mockup = {
+                        event_node: mockup_div.querySelector('img.mockup'),
+                        scrolling_node: mockup_div.querySelector('.inside-mockup img'),
+                        translate: 0,
+
+                    }
+                    mockup.bounding = mockup.scrolling_node.getBoundingClientRect()
+
+                    const space = 19
+
+                    
+                    
+                    mockup.event_node.addEventListener('wheel',(event)=>{
+                        event.preventDefault()
+                        const height = mockup.scrolling_node.getBoundingClientRect().height
+                        const mockup_height = mockup.event_node.getBoundingClientRect().height
+                        let limit = (height - mockup_height) * -1 
+                        //console.log(height)
+                        
+                        if(event.deltaY < 0){
+                            if((mockup.translate + space) <= 0){
+                                mockup.translate += space 
+
+                            }
+
+                        }else if(event.deltaY > 0 ){
+
+                                //console.log(`translate : ${mockup.translate}, calc: ${-(height - mockup_height +100)} `)
+
+                            //if( (mockup.translate - space) => limit ){
+                                mockup.translate -= space 
+                            //}
+                        }
+
+                        //console.log(mockup.translate)
+                        mockup.scrolling_node.style.transform = `translateY(${mockup.translate}px)`
                     })
                 </script>
             </client-only>
@@ -250,7 +305,8 @@ export default {
     .content.project .project-main-text{
         color: #A6A6A6;
         font-size: 22px;
-
+        display: flex;
+        align-items: center;
     }
 
     .content.project .line{
@@ -261,6 +317,27 @@ export default {
     }
 
     .content.project .mockup-div{
+        position: relative;
+    }
+    .content.project .mockup-div .mockup{
+        width: 75%;
+    }
+
+    .content.project .mockup-div .inside-mockup{
+        position: absolute;
+        width: 68%;
+        height: 92%;
+        overflow: scroll;
+        top:0;
+        z-index: -1;
+        transform: translate(5%, 4%);
+    }
+    .content.project .mockup-div .inside-mockup img{
+        width: 100%;
+        will-change: transform;
+    }
+
+    /* .content.project .mockup-div{
         position: relative;
     }
     .content.project .mockup-div .mockup{
@@ -286,22 +363,58 @@ export default {
     .content.project .mockup-div .inside-mockup{
         width: calc(13.8vw *1.5);
         height: 100%;
+    } */
+    /* bottom image || paralax */
+    .content.project .bottom-images{
+        height: 95vh;
+
+        margin-top: 100px;
+        margin-bottom: 140px;
+
+        position: relative;
     }
+    .content.project .bottom-images .border{
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        top:0;
+        left: -15.5vw;
+        background-color: black;
+        overflow: hidden;
+    }
+    .content.project .bottom-images .border .inside{
+        will-change: transform;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .content.project .bottom-images .border .inside img{
+        width: 30vw;
+        /* transform-origin: 0% 0%; */
+        /* transform: rotateZ(45deg); */
+        transform: translateY(-50%);
+    }
+
 
     /* next project */
     .content.project .next-project{
-
+        text-align: center;
     }
     .content.project .next-project h3{
         font-size: 32px;
         color: white;
+        margin-bottom: 18px;
     }
     .content.project .next-project a{ 
         font-size: 24px;
         color: #A6A6A6;
+        
     }
     .content.project .next-project .image-next{
-        height: 20%;
+        height: 14.5vw;
+        overflow: hidden;
+        margin-top: 80px;
     }
     .content.project .next-project .image-next img{
         width: 100%;

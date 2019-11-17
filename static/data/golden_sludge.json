@@ -10,10 +10,12 @@
     "project_slogan":"Increase awareness Sanitation in West African countries.",
     "project_main_text":"The Golden Sludge Alliance aims to celebrate successes, influence policies and practices, consolidate knowledge, use and showcase innovative approaches for sustainable sanitation in Africa. <br> <br> They wanted a website in the spirit of their other website, like Speak-Up Africa. This landing page include all the differents informations about the association.",
     "project_mockup_img":"http://cdn.elph.fr/dfhjk567FH/projet-golden-sludge/mockup_contenu_golden.png",
-    "project_bottom_img":"http://cdn.elph.fr/dfhjk567FH/projet-golden-sludge/",
-    "next_project":{
-        "name":"Concept page Unsplash",
-        "link":"unsplash",
-        "img":"http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_project.png"
-    }
+    "project_bottom_img":[
+        "http://cdn.elph.fr/dfhjk567FH/projet-golden-sludge/golden_bottom.png",
+        "http://cdn.elph.fr/dfhjk567FH/projet-golden-sludge/golden_bottom.png",
+        "http://cdn.elph.fr/dfhjk567FH/projet-golden-sludge/golden_bottom.png"
+    ],
+    "next_project_name":"Concept page Unsplash",
+    "next_project_link":"unsplash",
+    "next_project_img":"http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_project.png"
 }
