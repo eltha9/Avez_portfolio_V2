@@ -207,7 +207,8 @@ export default {
         top:0;
         left: 0;
         z-index: 0;
-        height: 104vh;
+        /* height: 104vh; */
+        height: 103vh;
         width: 100vw;
     }
     .main-image-to-body img{

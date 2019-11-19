@@ -3,20 +3,7 @@
     <Head />
     
     <div class="content index align-row">
-        <div class="left-bloc taille-sup-left">
-            <div class="side-diapo">
-                <div class="slider" style="transform:translate(0,0)">
-
-                    <div class="slide"></div>
-                    <div class="slide" v-for="item in projects">
-                        <img :src="item.project_img" alt="" >
-                        <img :src="item.project_img_responsive" class="repsonsive_image" alt="" >
-
-                        <div class="space" style=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="left-bloc taille-sup-left"></div>
 
         <div class="taille-5" style="padding-top: 10%; height:100%;">
             <div class="central-bloc taille-5">
@@ -24,12 +11,12 @@
                     <div style="position:relative">
                         <a  href="" class="project-title"></a>
                         <div class="big-diapo">
-                            <div class="slider" style="transform:translate(0,0)">
-                                <div class="slide" v-for="item in projects" :data-title="item.project_title" :data-href="item.project_url" >
+                            <div class="slider" style="transform: translateX(0);">
+                                <div class="slide" v-for="item in projects" style="display:flex;flex-direction:row">
                                     <img :src="item.project_img" alt="" >
-                                    <img :src="item.project_img_responsive" class="repsonsive_image" alt="" >
+                                    <img :src="item.project_img_responsive" class="repsonsive_image" style="display:none" alt="" >
 
-                                    <div class="space" style=""></div>
+                                    <div class="space" style="width:10vw; height:100%"></div>
                                 </div>
                             </div>
                         </div>
@@ -53,271 +40,51 @@
         </div>
         
 
-        <div class="right-bloc taille-sup-right">
-            <div class="side-diapo">
-                <div class="slider" >
-                    
-                    <div class="slide" v-for="item in projects">
-                        <img :src="item.project_img" alt="">
-                        <img :src="item.project_img_responsive" class="repsonsive_image" alt="" >
-                    </div>
-                    <div class="slide"></div>
-                </div>
-            </div>
-        </div>
+        <div class="right-bloc taille-sup-right"></div>
     </div>    
     <client-only>
         <script>
             // common class
-                class Slider {
-                    constructor(node, xType ,width, nb, start_state =0, y_translation = 0, yType= '%'){
-                        this.node = node
-                        this.width = width
-                        this.nb = nb.length
-                        this.xType = xType
-                        this.yType = yType
-                        this.state = start_state
-                        this.y = y_translation
+            const container = document.querySelector('.content.index')
+            const slider= container.querySelector('.big-diapo .slider')
+            let slides = null
+            const space = -73
+            let state = 0
 
-                        if(start_state !== 0 ){
-                            
-                            this.goTo(start_state)
-                        }
-                    }
-
-                    next(){
-                        if((this.state +1) == this.nb ){
-                            return false
-                        }
-
-                        this.state ++
-                        this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${this.y}${this.yType} )`
-                        return true
-                    }
-
-                    previous(){
-                        if((this.state -1) < 0 ){
-                            return false
-                        }
-                            this.state --
-                            this.node.style.transform= `translate( -${this.width* this.state}${this.xType},${ this.y}${this.yType} )`
-                        return true
-                    }
-
-                    goTo(id){
-                        if(id <0 || id>=this.nb  ){
-                            return false    
-                        }
-
-                        this.state = id
-                        this.node.style.transform= `translate( -${this.width* id}${this.xType},${ this.y}${this.yType} )`
-                        return true
-                    }
+            let move = (i)=>{
+                if(i < 0){
+                    i = 0
+                    return i
+                }else if(i >=4){
+                    i =3
+                    return i
                 }
 
-                class BigSlider extends Slider{
-                    constructor(node, xType ,width, nb ,titleNode, other_button = null,start_state =0, y_translation = 0, yType= '%'){
-                        super(node, xType, width, nb)
+                slider.style.transform = `translateX(${space*i}vw)`
+                return i
+            }
 
-                        this.slides = nb
-                        this.title = titleNode
+            let start = ()=>{
+                console.log('plop')
+                slides = slider.querySelectorAll('.slide')
+                
+            }
 
-
-
-                        this.titleChange()
-                        if(other_button !== null){
-                          //  this.otherButtonEvent()
-                        }
-                        //console.log(this.nb)
-                        //console.log(this)
-
-                    }
-                    next(){
-                        super.next()
-                        this.titleChange()
-                    }
-                    previous(){
-                        super.previous()
-                        this.titleChange()
-                    }
-                    goTo(id){
-                        super.goTo(id)
-                        this.titleChange()
-                    }
-
-
-                    otherButtonEvent(){
-                        this.other_button.addEventListener('click', (event)=>{
-                            event.preventDefault()
-                            this.next()
-                        })
-                    }
-                    
-                    scrollEvent(nodeToScroll){
-                        this.nodeToScroll = nodeToScroll
-
-                        //ToDo
-                    }
-
-                    dotChangeState(){
-                        
-                    }
-
-                    counterChangeState(){
-
-                    }
-
-                    titleChange(){
-                        const urlPrefix = "/projects/"
-                        this.title.innerHTML = this.slides[this.state].dataset.title
-                        this.title.href = `${urlPrefix}${this.slides[this.state].dataset.href}`
-                        console.log( this.slides[this.state].dataset.title)
-                        
-                    }
+            window.addEventListener('keydown',(event)=>{
+                
+                if(event.keyCode === 39){
+                    state++
+                    console.log(`click right ${state}`)
+                    state = move(state)
+                }else if(event.keyCode === 37){
+                    state --
+                    console.log(`click left ${state}`)
+                    state = move(state)
                 }
+            } )
 
+            setTimeout(start(),200)
 
-
-                //CODE
-
-                // slider
-                let content = document.querySelector('.content.index')
-
-                let left_slider 
-                let right_slider 
-                let big_slider 
-                let title 
-
-                let left_slide 
-
-                let right_slide 
-
-                let big_slide 
-                let dot
-                let state_node
-
-                let number_slide
-
-                let run = ()=>{
-                    left_slider = content.querySelector('.left-bloc .side-diapo .slider')
-                    right_slider = content.querySelector('.right-bloc .side-diapo .slider')
-                    big_slider = content.querySelector('.central-bloc .big-diapo .slider')
-                    title = content.querySelector('.central-bloc a.project-title')
-                    dots = content.querySelectorAll('.central-bloc .dots .dot')
-                    state_node = content.querySelector('.central-bloc .state')
-
-                    number_slide = big_slider.querySelectorAll('.slide').length
-
-                    left_slide = new Slider(left_slider,'vw',60,left_slider.querySelectorAll('.slide')  )
-
-                    right_slide = new Slider(right_slider,'vw',60,right_slider.querySelectorAll('.slide'),1 )
-
-                    big_slide = new BigSlider(big_slider, 'vw', 63, [...big_slider.querySelectorAll('.slide')],title )
-
-                    dotEvent(dots)
-
-                    
-
-                    document.addEventListener('keydown', (event)=>{
-
-                        if(event.keyCode === 39){
-                            nextSlide()
-                        }else if(event.keyCode === 37){
-                            previousSlide()
-                        }
-                    })
-
-                }
-
-                let scrool_main_event = window.addEventListener('wheel', (event)=>{
-                        window.removeEventListener('wheel', ()=>{}, true)
-                            console.log(`x ${event.deltaX}, y ${event.deltaY} `)
-
-                            if( event.deltaX <0 || event.deltaY > 0 ){
-                                previousSlide()
-                            }else if(event.deltaX >0 || event.deltaY < 0){
-                                nextSlide()
-                            }
-
-
-                        setTimeout(scrool_main_event, 600)
-
-                    })
-
-                let global_state = 0
-
-                //slider function
-                let nextSlide = ()=>{
-                    if((global_state +1) == number_slide){
-                        return false
-                    } 
-
-                    global_state ++
-
-                    left_slide.next()
-                    big_slide.next()
-                    right_slide.next()
-
-                    dotState(global_state)
-                }
-
-                let previousSlide = ()=>{
-                    if((global_state -1) < 0){
-                        return false
-                    }
-
-                    global_state --
-                    left_slide.previous()
-                    big_slide.previous()
-                    right_slide.previous()
-
-                    dotState(global_state)
-                }
-
-                let goToSlide = (id)=>{
-                    if(id< 0 || id>=number_slide){
-                        return false
-                    }
-
-                    id = parseInt(id)
-                    left_slide.goTo(id)
-                    big_slide.goTo(id)
-                    right_slide.goTo(id+1)
-                    dotState(id)
-                }
-
-                let dotEvent = (dots)=>{
-                    dots[0].classList.add('current')
-                    for(let i=0; i<dots.length; i++){
-                        dots[i].dataset.slideNb = i
-                        dots[i].addEventListener('click', (event)=>{
-                            event.preventDefault()
-
-                            const state = dots[i].dataset.slideNb
-                            goToSlide(state)
-
-                            
-                        })
-                    }
-                }
-
-                let dotState = (id)=>{
-                    for(let j =0; j<dots.length; j++){
-                        dots[j].classList.remove('current')
-                    }
-                    dots[id].classList.add('current')
-                    stateNb(id)
-                }
-
-
-                let stateNb = (id)=>{
-                    state_node.innerHTML = `0${id+1}`
-                }
-
-                setTimeout(()=>{
-                    run()
-                    console.info("runnig")
-                },500)
         </script>
     </client-only>
   </div>
@@ -391,7 +158,6 @@ body{
 .content.index .central-bloc .big-diapo{
     height: 75vh;
     width: 63vw;
-    clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
     position: relative;
 }
 
@@ -409,12 +175,12 @@ body{
 
 .content.index .central-bloc .big-diapo .slider .slide{
     height: 75vh;
-    width: 63vw;
+    width: 73vw;
 
 }
 .content.index .central-bloc .big-diapo .slider .slide img{
-    height: 100%;
-    width: 100%;
+    height: 75vh;
+    width: 63vw;
 }
 .content.index .central-bloc .big-diapo .slider .slide img.responsive_image{
     display: none;
