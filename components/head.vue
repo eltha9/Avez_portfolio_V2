@@ -1,6 +1,6 @@
 <template>
     <div class="menu-vue">
-        <div class="home-animation-window">
+        <!-- <div class="home-animation-window">
             <div class="window-side"></div>
             <div class="window-center border"></div>
             <div class="window-center border"></div>
@@ -8,7 +8,7 @@
             <div class="window-center border"></div>
             <div class="window-center border"></div>
             <div class="window-side right border"></div>
-        </div>
+        </div> -->
         <a class="logo" href="/">gaetan avez.</a>
         <div class="social">
             <a class="linkedin" href="https://www.linkedin.com/in/gaetan-avez/" title="Gaëtan Avez - Linkedin" target="_blank"><img src="~/assets/images/linkedin.svg" alt="Linkedin logo"></a>

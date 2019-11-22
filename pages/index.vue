@@ -9,14 +9,14 @@
             <div class="central-bloc taille-5">
                 <div style="position: absolute; right:0; bottom:0;">
                     <div style="position:relative">
-                        <a  href="" class="project-title"></a>
-                        <div class="big-diapo">
+                        <a  href="" class="project-title">{{projects.project_title}}</a>
+                        <div class="big-diapo taille-5">
                             <div class="slider" style="transform: translateX(0);">
                                 <div class="slide" v-for="item in projects" style="display:flex;flex-direction:row">
-                                    <img :src="item.project_img" alt="" >
+                                    <img :src="item.project_img" alt="" style="margin-right:10vw;">
                                     <img :src="item.project_img_responsive" class="repsonsive_image" style="display:none" alt="" >
 
-                                    <div class="space" style="width:10vw; height:100%"></div>
+                                    <!-- <div class="space" style="width:10vw; height:100%"></div> -->
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ body{
 }
 .content.index .central-bloc .big-diapo{
     height: 75vh;
-    width: 63vw;
+
     position: relative;
 }
 
@@ -174,12 +174,12 @@ body{
 }
 
 .content.index .central-bloc .big-diapo .slider .slide{
-    height: 75vh;
+    /* height: 75vh; */
     width: 73vw;
 
 }
 .content.index .central-bloc .big-diapo .slider .slide img{
-    height: 75vh;
+    /* height: 75vh; */
     width: 63vw;
 }
 .content.index .central-bloc .big-diapo .slider .slide img.responsive_image{
@@ -256,7 +256,7 @@ body{
 .content.index .central-bloc .state{
     position: absolute;
     bottom: 0;
-    right: -9.5%;
+    right: -2.5%;
     transform: translateY(20%);
     font-family: Arial Black;
     font-style: normal;
