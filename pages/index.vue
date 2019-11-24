@@ -105,6 +105,11 @@ export default {
         })
 
     },
+    head(){
+        return{
+            title: "Gaetan Avez - Contact Me"
+        }
+    },
     data(){
         return {
             projects: {},

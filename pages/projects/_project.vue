@@ -189,6 +189,11 @@ export default {
         })
 
     },
+    head(){
+        return{
+            title: `Gaetan Avez - ${this.json.page_title} project`
+        }
+    },
     data(){
         return {
             values : this.json,
