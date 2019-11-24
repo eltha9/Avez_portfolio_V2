@@ -103,7 +103,7 @@ export default {
         font-size: 24px;
         color:white;
         
-        
+        outline: none;
     }
     .content.contact textarea{ /* afficher une ligne blanche en dessous quand on clic dessus*/ 
         margin-top: 45px;
@@ -115,6 +115,7 @@ export default {
         border:none;
         resize: none;
 
+        outline: none;
     }
     .content.contact form{
         flex-grow: 100;
@@ -142,6 +143,8 @@ export default {
         text-decoration: none;
         padding: 0;
         cursor: pointer;
+
+        outline: none;
     }
     .content.contact .bottom img{
         vertical-align: middle;
