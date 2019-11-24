@@ -10,12 +10,8 @@
     "project_slogan":"Lorem ipsum dolor sit amet,dfghjklkjhg",
     "project_main_text":"This summer, Candia release a new product, Candy’up Bio, and they need to present this product on their website. <br> <br>Like for the others candia’s products, they present them on on a single page. This page include all the differents nutrition’s informations and at the same time communicate about the benefits of this drink.",
     "project_mockup_img":"http://cdn.elph.fr/dfhjk567FH/projet-thib/mockup_contenu_thib.png",
-    "project_bottom_img":[
-        "http://cdn.elph.fr/dfhjk567FH/projet-thib/Thib_bottom1.png",
-        "http://cdn.elph.fr/dfhjk567FH/projet-thib/Thib_bottom2.png",
-        "http://cdn.elph.fr/dfhjk567FH/projet-thib/Thib_bottom2.png"
-    ],
+    "project_bottom_img":"http://cdn.elph.fr/dfhjk567FH/projet-thib/thib_paralax.png",
     "next_project_name":"Candy’up Bio",
     "next_project_link":"/projects/candy_up",
-    "next_project_img":"http://cdn.elph.fr/dfhjk567FH/proje-candia/Candia_project.png"
+    "next_project_img":"http://cdn.elph.fr/dfhjk567FH/projet-candia/Candia_project.png"
 }

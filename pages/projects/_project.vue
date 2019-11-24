@@ -50,7 +50,7 @@
             <div class="bottom-images row">
                 <div class="border">
                     <div class="inside">
-                        <img v-for="image in json.project_bottom_img" :src="image" alt="">
+                        <img :src="json.project_bottom_img" alt="">
                     </div>
                 </div>
             </div>
@@ -64,7 +64,11 @@
             </div>
             <client-only>
                 <script>
+                    //comon 
+
                     const project_container = document.querySelector('.content.project')
+
+                    //slogan slider 
                     let project_slogan =  {
                         node : project_container.querySelector('.project-slogan')
                         
@@ -80,12 +84,13 @@
 
                     window.addEventListener('scroll', (event)=>{
                             slogan(event)
+                            paralax_effect()
 
                     })
 
                     let slogan = (event) =>{
                         project_slogan.bouding = project_slogan.node.getBoundingClientRect()
-                        //console.log(`top : ${project_slogan.bouding.top}, height:${window_height}`)
+
                         if( project_slogan.bouding.top < window_height){
                             slogan_direction =  project_slogan.bouding.top - window_height 
 
@@ -144,6 +149,24 @@
                         //console.log(mockup.translate)
                         mockup.scrolling_node.style.transform = `translateY(${mockup.translate}px)`
                     })
+
+
+                    // paralax
+                    let paralax_image = project_container.querySelector('.bottom-images .border .inside img')
+                    let paralax_container = project_container.querySelector('.bottom-images .border .inside')
+                    let paralax_sinus = 50
+
+                    let paralax_effect = ()=>{
+                        let bounding =  paralax_container.getBoundingClientRect()
+                        console.log(bounding)
+                        if( ( bounding.top+(bounding.height/4) ) < window_height){
+                            paralax_sinus = bounding.top - window_height
+                            console.log(50+paralax_sinus/10)
+                            paralax_image.style.top = `${50+paralax_sinus/50}%`
+                            //console.log(paralax_image.style)
+                        }
+                    }
+
                 </script>
             </client-only>
         </div>
@@ -384,17 +407,19 @@ export default {
         overflow: hidden;
     }
     .content.project .bottom-images .border .inside{
-        will-change: transform;
-
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        position: relative;
     }
     .content.project .bottom-images .border .inside img{
-        width: 30vw;
+        width: 140%;
+        position: absolute;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        will-change: top;
         /* transform-origin: 0% 0%; */
         /* transform: rotateZ(45deg); */
-        transform: translateY(-50%);
     }
 
 

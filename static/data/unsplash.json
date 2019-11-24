@@ -10,11 +10,7 @@
     "project_slogan":"Lorem ipsum dolor sit amet,dfghjklkjhg",
     "project_main_text":"I wanted ton created a landing page presenting the differents models <br> <br>This summer, Candia release a new product, Candy’up Bio, and they need to present this product on their website. <br> <br>Like for the others candia’s products, they present them on on a single page. This page include all the differents nutrition’s informations and at the same time communicate about the benefits of this drink.",
     "project_mockup_img":"http://cdn.elph.fr/dfhjk567FH/projet-unsplash/mockup_contenu_unsplash.png",
-    "project_bottom_img":[
-        "http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_bottom_1.png",
-        "http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_bottom_2.png",
-        "http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_bottom_3.png"
-    ],
+    "project_bottom_img":"http://cdn.elph.fr/dfhjk567FH/projet-unsplash/unsplash_paralax.png",
     "next_project_name":"Thibault Richard Portfolio",
     "next_project_link":"thibault_richard_portfolio",
     "next_project_img":"http://cdn.elph.fr/dfhjk567FH/projet-thib/Thib_project.png"
