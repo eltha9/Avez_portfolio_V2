@@ -214,12 +214,12 @@ export default {
         height: 100%;
         /* height: content; */
 
-        padding-top: 10%;
+        /* padding-top: 10%; */
         overflow-x: hidden;
     }
     /* common */
     .content.project{
-        padding: 0 15.5%;
+        padding: 10% 15.5% 0 15.5%;
         color: white;
         /* background-color: orange; */
 

@@ -215,6 +215,8 @@
                     flex-direction: column;
                     justify-content: space-evenly;
                     z-index: 200;
+
+                    text-align: center;
                     
                 }
                     .responsive-menu-content .responsive-link a{
