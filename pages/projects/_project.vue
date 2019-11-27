@@ -2,7 +2,7 @@
     <div class="container">
         <Head />
         <div class="main-image-to-body">
-            <div style="position:relative;width:100%; height:100%;">
+            <div style="position:relative;width:100%;">
 
                 <img :src="json.main_image" :alt="json.page_title + 'Home page'" class="not-responsive-main-image">
                 <img :src="json.main_image_responsive" :alt="json.page_title + 'Home page'" class="responsive-main-image">
@@ -21,12 +21,14 @@
                 <div class="line"></div>
                 <span class="post-name">{{json.post_name}}</span>
             </div>
-            <div class="row align-row taille-5 chapeau">
-                <div class="taille-1 project-date">
-                    {{json.project_date}}
-                </div>
-                <div class="taille-1 project-type">
-                    {{json.project_type}}
+            <div class="row taille-5 chapeau">
+                <div class="top-description">
+                    <div class="taille-1 project-date">
+                        {{json.project_date}}
+                    </div>
+                    <div class="taille-1 project-type">
+                        {{json.project_type}}
+                    </div>
                 </div>
                 <div class="taille-3 project-top-description">
                     {{json.project_top_description}}
@@ -335,6 +337,8 @@ export default {
         font-size: 64px;
         white-space: nowrap;
         will-change: right;
+
+        margin:0;
     }
 
 
@@ -465,7 +469,13 @@ export default {
 
     .content.project .chapeau{
         margin-bottom: 46px;
+        display: flex;
+        flex-direction: row;
     } 
+    .content.project .chapeau .top-description{
+        display: flex;
+        flex-direction: row;
+    }
 
     @media screen and (max-width: 1024px) {
         body{
@@ -480,16 +490,72 @@ export default {
             padding: 10% 6.4% 0 6.4%;
         }
 
+        .main-image-to-body{
+            height: auto;
+        
+        }
+        
+        .main-image-to-body img.not-responsive-main-image{
+            height: 100%;
+            width: 100%;
+            display: none;
+        }
+        .main-image-to-body img.responsive-main-image{
+            height: auto;
+            width: 100%;
+            display: inherit;
+        }
 
-    .main-image-to-body img.not-responsive-main-image{
-        height: 100%;
-        width: 100%;
-        display: none;
-    }
-    .main-image-to-body img.responsive-main-image{
-        height: 100%;
-        width: 100%;
-        display: inherit;
-    }
+        .content.project .main_image{
+            height: calc(50vh)
+        }
+
+        .content.project h1.page-title{
+            color: white;
+            font-size: 32px;
+            margin-top: 140px;
+            margin-bottom: 12px;
+        }
+        .content.project .post-type{
+            color:white;
+            font-size: 16px;
+        }
+        .content.project .post-name{
+            color:white;
+            font-size: 16px;
+        }
+        .content.project .project-date{
+            color: #A6A6A6;
+            font-size: 16px;
+        }
+        .content.project .project-type{
+            color: #A6A6A6;
+            font-size: 16px;
+        }
+        .content.project .project-top-description{
+            color: #A6A6A6;
+            font-size: 16px;
+        }
+
+        .content.project .ux{
+            margin-bottom: 30px;
+        }
+
+        .content.project .chapeau{
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+        } 
+        .content.project  .chapeau .top-description{
+            margin-bottom: 24px;
+        }
+        .content.project .project-slogan-container{
+            margin-bottom: 30px;
+            height: 40px;
+        }
+        .content.project .project-slogan-container .project-slogan{
+            font-size: 32px; 
+        }
+
     }
 </style>
