@@ -90,6 +90,30 @@ a.logo{
     width: calc(1vw * 15.5);
 }
 
+@media screen and (max-width: 1024px) {
+    .taille-1{
+        width: calc(1vw * 17.44);
+    }
+    .taille-2{
+        width: calc(1vw * 17.44 *2);
+    }
+    .taille-3{
+        width: calc(1vw * 17.44 *3);
+    }
+    .taille-4{
+        width: calc(1vw * 17.44 *4);
+    }
+    .taille-5{
+        width: calc(1vw * 17.44 *5);
+    }
+    .taille-sup-left{
+        width: calc(1vw * 6.4);
+    }
+    .taille-sup-right{
+        width: calc(1vw * 6.4);
+    }
+}
+
 /* 
     Main animation 
 */

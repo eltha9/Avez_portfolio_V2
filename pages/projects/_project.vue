@@ -4,7 +4,8 @@
         <div class="main-image-to-body">
             <div style="position:relative;width:100%; height:100%;">
 
-                <img :src="json.main_image" :alt="json.page_title + 'Home page'">
+                <img :src="json.main_image" :alt="json.page_title + 'Home page'" class="not-responsive-main-image">
+                <img :src="json.main_image_responsive" :alt="json.page_title + 'Home page'" class="responsive-main-image">
                 <div class="call-to-scroll">
                     <span class="text">scroll</span>
                     <span class="vertical-bar"></span>
@@ -158,12 +159,12 @@
 
                     let paralax_effect = ()=>{
                         let bounding =  paralax_container.getBoundingClientRect()
-                        console.log(bounding)
+                        //console.log(bounding)
                         if( ( bounding.top+(bounding.height/4) ) < window_height){
                             paralax_sinus = bounding.top - window_height
-                            console.log(50+paralax_sinus/10)
+                            //console.log(50+paralax_sinus/10)
                             paralax_image.style.top = `${50+paralax_sinus/50}%`
-                            //console.log(paralax_image.style)
+
                         }
                     }
 
@@ -239,10 +240,16 @@ export default {
         height: 103vh;
         width: 100vw;
     }
-    .main-image-to-body img{
+    .main-image-to-body img.not-responsive-main-image{
         height: 100%;
         width: 100%;
     }
+    .main-image-to-body img.responsive-main-image{
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+
     .main-image-to-body .call-to-scroll{
         position: absolute;
         display: flex;
@@ -460,4 +467,29 @@ export default {
         margin-bottom: 46px;
     } 
 
+    @media screen and (max-width: 1024px) {
+        body{
+            width: 100vw;
+            overflow-x: hidden;
+        }
+        .container{
+            overflow-x: hidden;
+        }
+
+        .content.project{
+            padding: 10% 6.4% 0 6.4%;
+        }
+
+
+    .main-image-to-body img.not-responsive-main-image{
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+    .main-image-to-body img.responsive-main-image{
+        height: 100%;
+        width: 100%;
+        display: inherit;
+    }
+    }
 </style>
