@@ -475,6 +475,7 @@ export default {
     .content.project .chapeau .top-description{
         display: flex;
         flex-direction: row;
+        width: 100% !important; 
     }
 
     @media screen and (max-width: 1024px) {
@@ -557,5 +558,14 @@ export default {
             font-size: 32px; 
         }
 
+
+        /* paralax responsive  */
+        .content.project .bottom-images .border{
+            /* height: 10vh; */
+        }
+        .content.project .bottom-images .border{
+            width: 100vw;
+            left: -6.4vw;
+        }
     }
 </style>
